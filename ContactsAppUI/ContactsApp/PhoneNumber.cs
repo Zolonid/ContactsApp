@@ -1,39 +1,41 @@
-﻿using Newtonsoft.Json;
+﻿using System;
+using Newtonsoft.Json;
 
 namespace ContactsApp
 {
     public class PhoneNumber
     {
-        /// <summary>
-        /// Contains county code
-        /// </summary>
-        public string ZoneCode { get; private set; }
+        private string _zoneCode;
+        private string _number;
 
         /// <summary>
-        /// Contains number (6 digits)
+        /// Contains zone code (3-4 digits after county code)
         /// </summary>
-        public string Number { get; private set; }
-
-        /// <summary>
-        /// Sets code of the county (first 3-4 numbers after (+7))
-        /// </summary>
-        /// <param name="zoneCode"></param>
-        public void SetZoneCode(string zoneCode)
+        public string ZoneCode
         {
-            //TODO: Make validity check
+            get => _zoneCode;
+            set
+            {
+                if (value.Length > 4)
+                    throw new Exception("Zone code is too long.");
 
-            ZoneCode = zoneCode;
+                _zoneCode = value;
+            }
         }
 
         /// <summary>
-        /// Set number without 
+        /// Contains number (up to 7 digits)
         /// </summary>
-        /// <param name="phoneNumber"></param>
-        public void SetPhoneNumber(string phoneNumber)
+        public string Number
         {
-            //TODO: Make validity check
+            get => _number;
+            set
+            {
+                if (value.Length > 7)
+                    throw new Exception("Number is too long.");
 
-            Number = phoneNumber;
+                _number = value;
+            }
         }
 
         /// <summary>
@@ -46,11 +48,10 @@ namespace ContactsApp
         }
 
         /// <summary>
-        /// Construtor for json
+        /// Construtor with all parameters
         /// </summary>
-        /// <param name="ZoneCode"></param>
+        /// <param name="zoneCode"></param>
         /// <param name="number"></param>
-        [JsonConstructor]
         public PhoneNumber(string zoneCode, string number)
         {
             ZoneCode = zoneCode;

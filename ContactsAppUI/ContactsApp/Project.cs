@@ -1,17 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace ContactsApp
 {
+    /// <summary>
+    /// Wrapper class for contacts
+    /// </summary>
     public class Project
     {
         /// <summary>
-        /// List of contacts (up to 200) for serialization
+        /// Holds existing contacts
         /// </summary>
-        public List<Contact> ContactList { get; set; }
+        public List<Contact> ContactList;
 
         /// <summary>
-        /// Contructor
+        /// Default contructor with no parameters
         /// </summary>
         public Project()
         {

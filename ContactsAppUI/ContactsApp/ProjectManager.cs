@@ -1,19 +1,24 @@
-﻿using System.Collections.Generic;
-using System.IO;
-using System.Runtime.Serialization;
+﻿using System.IO;
 using Newtonsoft.Json;
 
 namespace ContactsApp
 {
+    /// <summary>
+    /// Static class for save\load with json
+    /// </summary>
     public static class ProjectManager
     {
-        public static string FilePath = @"C:\Users\Артём\Desktop\json.txt";
-
+        /// <summary>
+        /// Uses Newtonsoft Json library to save data to specified file.
+        /// </summary>
+        /// <param name="data">Wrapper class with data to save.</param>
+        /// <param name="file">Location of file to save.</param>
         public static void SaveToFile(Project data, string file)
         {
             JsonSerializer serializer = new JsonSerializer
             {
                 Formatting = Formatting.Indented,
+                TypeNameHandling = TypeNameHandling.All
             };
 
             using (StreamWriter sw = new StreamWriter(file))
@@ -23,21 +28,23 @@ namespace ContactsApp
             }
         }
 
+        /// <summary>
+        /// Uses Newtonsoft Json library to load data from specified file.
+        /// </summary>
+        /// <param name="file">Location of file with saved data.</param>
         public static Project LoadFromFile(string file)
         {
-            
-
             JsonSerializer serializer = new JsonSerializer
             {
                 Formatting = Formatting.Indented,
+                TypeNameHandling = TypeNameHandling.All
             };
 
-            StreamReader sr = new StreamReader(file);
-            JsonReader reader = new JsonTextReader(sr);
-
-            Project projectData = (Project)serializer.Deserialize<Project>(reader);
-
-            return projectData;
+            using (StreamReader sr = new StreamReader(file))
+            using (JsonReader reader = new JsonTextReader(sr))
+            {
+                return (Project) serializer.Deserialize<Project>(reader);
+            }
         }
         
     }

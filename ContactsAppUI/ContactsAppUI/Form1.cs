@@ -13,13 +13,16 @@ namespace ContactsAppUI
 {
     public partial class Form1 : Form
     {
-        public Project projectData;
+        public readonly string _filePath;
+        public static string _fileName = "json.txt";
+        public Project _projectData;
 
         public Form1()
         {
             InitializeComponent();
 
-            projectData = new Project();
+            _filePath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            _projectData = new Project();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -29,22 +32,23 @@ namespace ContactsAppUI
 
             for (int i = 0; i < 10; i++)
             {
-                contacts[i] = new Contact(new string[3] { "A" + i, "D", "N" }, 
-                    new PhoneNumber("999", "6192838"), 
+                contacts[i] = new Contact(
+                    new string[3] { "A" + i, "D", "N" },
+                    new PhoneNumber("999", "6192838"),
                     new DateTime(1999, 06, 12),
                     "GenericEmail@gmail.com",
                     "123456");
-                projectData.ContactList.Add(contacts[i]);
+                _projectData.ContactList.Add(contacts[i]);
             }
 
             //Save to file
-            ProjectManager.SaveToFile(projectData, ProjectManager.FilePath);
+            ProjectManager.SaveToFile(_projectData, _filePath + @"\" + _fileName);
 
             //Delete initialized contacts
-            projectData = new Project();
+            _projectData = null;
 
             //Loading contacs from file
-            projectData = ProjectManager.LoadFromFile(ProjectManager.FilePath);
+            _projectData = ProjectManager.LoadFromFile(_filePath + @"\" + _fileName);
         }
 
 
