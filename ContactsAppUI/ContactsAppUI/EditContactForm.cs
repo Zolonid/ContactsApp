@@ -31,7 +31,7 @@ namespace ContactsAppUI
 
                 BithdayDateTimePicker.Text = currentContact.Birthday.ToString();
 
-                PhoneTextBox.Text = "+7 (" + currentContact.PhoneNumber.ZoneCode + ") " + currentContact.PhoneNumber.Number;
+                PhoneTextBox.Text = currentContact.PhoneNumber.ZoneCode + currentContact.PhoneNumber.Number;
 
                 EmailTextBox.Text = currentContact.Email;
                 VKIDTextBox.Text = currentContact.VKID;
@@ -64,7 +64,6 @@ namespace ContactsAppUI
             {
                 MessageBox.Show(exception.Message);
             }
-            
         }
 
         private void CancelButton_Click(object sender, EventArgs e)
@@ -74,7 +73,7 @@ namespace ContactsAppUI
 
         private void BanSpecialSymbols(object sender, KeyPressEventArgs e)
         {
-            var regex = new Regex(@"[^a-zA-Z0-9\s]");
+            var regex = new Regex(@"[^a-zA-Z0-9а-яА-Я\b\s]");
             if (regex.IsMatch(e.KeyChar.ToString()))
             {
                 e.Handled = true;

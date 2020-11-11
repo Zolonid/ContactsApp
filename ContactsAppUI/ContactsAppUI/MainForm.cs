@@ -35,7 +35,9 @@ namespace ContactsAppUI
                 RefreshListBox();
             }
         }
-
+        /// <summary>
+        /// Reloads contacts from _projectData to listbox on MainForm
+        /// </summary>
         private void RefreshListBox()
         {
             ContactsListBox.Items.Clear();
@@ -49,18 +51,22 @@ namespace ContactsAppUI
 
         }
 
+        /// <summary>
+        /// Reloads contacts info to textboxes on MainForm
+        /// </summary>
         private void RefreshContactInfo()
         {
             if (_projectData.ContactList.Count != 0)
             {
-                Contact selectedContact = _projectData.ContactList[ContactsListBox.SelectedIndex];
+                var index = ContactsListBox.SelectedIndex;
+                Contact selectedContact = index == -1 ? _projectData.ContactList.Last() : _projectData.ContactList[index];
                 NameTextBox.Text = selectedContact.Name[0];
                 MiddleNameTextBox.Text = selectedContact.Name[1];
                 LastNameTextBox.Text = selectedContact.Name[2];
 
                 BithdayDateTimePicker.Text = selectedContact.Birthday.ToString();
 
-                PhoneTextBox.Text = "+7 (" + selectedContact.PhoneNumber.ZoneCode + ") " + selectedContact.PhoneNumber.Number;
+                PhoneTextBox.Text = selectedContact.PhoneNumber.ZoneCode + selectedContact.PhoneNumber.Number;
 
                 EmailTextBox.Text = selectedContact.Email;
                 VKIDTextBox.Text = selectedContact.VKID;
@@ -71,6 +77,9 @@ namespace ContactsAppUI
             }
         }
 
+        /// <summary>
+        /// Clears textboxes on MainForm
+        /// </summary>
         private void ClearContactInfo()
         {
             NameTextBox.Text = "";
@@ -85,6 +94,9 @@ namespace ContactsAppUI
             VKIDTextBox.Text = "";
         }
 
+        /// <summary>
+        /// Demo for json serialization and deserialization.
+        /// </summary>
         void JsonDemo()
         {
             //Initialization of 10 contacts
@@ -113,6 +125,7 @@ namespace ContactsAppUI
 
         private void AddContactButton_Click(object sender, EventArgs e)
         {
+            int index = ContactsListBox.SelectedIndex;
             var editContactForm = new EditContactForm();
             DialogResult dr = editContactForm.ShowDialog(this);
             if (dr == DialogResult.Cancel)
@@ -132,6 +145,7 @@ namespace ContactsAppUI
 
         private void EditContactButton_Click(object sender, EventArgs e)
         {
+            int index = ContactsListBox.SelectedIndex;
             EditContactForm editContactForm = new EditContactForm();
             editContactForm.currentContact = _projectData.ContactList[ContactsListBox.SelectedIndex];
             DialogResult dr = editContactForm.ShowDialog(this);

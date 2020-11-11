@@ -10,6 +10,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Reports", "Reports", "{5D61C10C-B20A-486F-B401-CC4FA127744C}"
 	ProjectSection(SolutionItems) = preProject
 		..\Reports\Lab2.docx = ..\Reports\Lab2.docx
+		..\Reports\Lab3.docx = ..\Reports\Lab3.docx
 	EndProjectSection
 EndProject
 Global
