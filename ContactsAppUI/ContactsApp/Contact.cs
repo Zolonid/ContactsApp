@@ -118,7 +118,9 @@ namespace ContactsApp
         /// </summary>
         public Contact()
         {
-
+            _name = new string[3];
+            PhoneNumber = new PhoneNumber();
+            Birthday = DateTime.Today;
         }
 
         /// <summary>
