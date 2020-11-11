@@ -66,7 +66,7 @@
             this.CancelButton.Location = new System.Drawing.Point(504, 12);
             this.CancelButton.Name = "CancelButton";
             this.CancelButton.Size = new System.Drawing.Size(75, 23);
-            this.CancelButton.TabIndex = 1;
+            this.CancelButton.TabIndex = 8;
             this.CancelButton.Text = "Cancel";
             this.CancelButton.UseVisualStyleBackColor = true;
             this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
@@ -76,7 +76,7 @@
             this.AcceptButton.Location = new System.Drawing.Point(423, 12);
             this.AcceptButton.Name = "AcceptButton";
             this.AcceptButton.Size = new System.Drawing.Size(75, 23);
-            this.AcceptButton.TabIndex = 0;
+            this.AcceptButton.TabIndex = 7;
             this.AcceptButton.Text = "OK";
             this.AcceptButton.UseVisualStyleBackColor = true;
             this.AcceptButton.Click += new System.EventHandler(this.AcceptButton_Click);
@@ -207,7 +207,7 @@
             this.NameTextBox.Margin = new System.Windows.Forms.Padding(0, 0, 5, 0);
             this.NameTextBox.Name = "NameTextBox";
             this.NameTextBox.Size = new System.Drawing.Size(454, 26);
-            this.NameTextBox.TabIndex = 6;
+            this.NameTextBox.TabIndex = 0;
             this.NameTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.BanSpecialSymbols);
             // 
             // MiddleNameTextBox
@@ -218,7 +218,7 @@
             this.MiddleNameTextBox.Margin = new System.Windows.Forms.Padding(0, 0, 5, 0);
             this.MiddleNameTextBox.Name = "MiddleNameTextBox";
             this.MiddleNameTextBox.Size = new System.Drawing.Size(454, 26);
-            this.MiddleNameTextBox.TabIndex = 7;
+            this.MiddleNameTextBox.TabIndex = 1;
             this.MiddleNameTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.BanSpecialSymbols);
             // 
             // NameLabel
@@ -241,7 +241,7 @@
             this.VKIDTextBox.Margin = new System.Windows.Forms.Padding(0, 0, 5, 0);
             this.VKIDTextBox.Name = "VKIDTextBox";
             this.VKIDTextBox.Size = new System.Drawing.Size(454, 26);
-            this.VKIDTextBox.TabIndex = 11;
+            this.VKIDTextBox.TabIndex = 6;
             this.VKIDTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.BanSpecialSymbols);
             // 
             // EmailTextBox
@@ -252,7 +252,7 @@
             this.EmailTextBox.Margin = new System.Windows.Forms.Padding(0, 0, 5, 0);
             this.EmailTextBox.Name = "EmailTextBox";
             this.EmailTextBox.Size = new System.Drawing.Size(454, 26);
-            this.EmailTextBox.TabIndex = 10;
+            this.EmailTextBox.TabIndex = 5;
             // 
             // PhoneTextBox
             // 
@@ -262,7 +262,7 @@
             this.PhoneTextBox.Margin = new System.Windows.Forms.Padding(0, 0, 5, 0);
             this.PhoneTextBox.Name = "PhoneTextBox";
             this.PhoneTextBox.Size = new System.Drawing.Size(454, 26);
-            this.PhoneTextBox.TabIndex = 9;
+            this.PhoneTextBox.TabIndex = 4;
             this.PhoneTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.BanSpecialSymbols);
             // 
             // BithdayDateTimePicker
@@ -274,7 +274,7 @@
             this.BithdayDateTimePicker.Margin = new System.Windows.Forms.Padding(0, 0, 5, 0);
             this.BithdayDateTimePicker.Name = "BithdayDateTimePicker";
             this.BithdayDateTimePicker.Size = new System.Drawing.Size(454, 29);
-            this.BithdayDateTimePicker.TabIndex = 12;
+            this.BithdayDateTimePicker.TabIndex = 3;
             // 
             // LastNameTextBox
             // 
@@ -284,7 +284,7 @@
             this.LastNameTextBox.Margin = new System.Windows.Forms.Padding(0, 0, 5, 0);
             this.LastNameTextBox.Name = "LastNameTextBox";
             this.LastNameTextBox.Size = new System.Drawing.Size(454, 26);
-            this.LastNameTextBox.TabIndex = 13;
+            this.LastNameTextBox.TabIndex = 2;
             this.LastNameTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.BanSpecialSymbols);
             // 
             // EditContactForm

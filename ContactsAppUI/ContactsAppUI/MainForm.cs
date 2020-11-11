@@ -132,7 +132,7 @@ namespace ContactsAppUI
 
         private void EditContactButton_Click(object sender, EventArgs e)
         {
-            var editContactForm = new EditContactForm();
+            EditContactForm editContactForm = new EditContactForm();
             editContactForm.currentContact = _projectData.ContactList[ContactsListBox.SelectedIndex];
             DialogResult dr = editContactForm.ShowDialog(this);
             if (dr == DialogResult.Cancel)
@@ -168,19 +168,19 @@ namespace ContactsAppUI
             }
         }
 
-        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        private void saveToFileToolStripMenuItem_Click(object sender, EventArgs e)
+        private void SaveToFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FolderBrowserDialog folderDialog = new FolderBrowserDialog();
             if (folderDialog.ShowDialog() == DialogResult.OK)
                 ProjectManager.SaveToFile(_projectData, folderDialog.SelectedPath + @"\" + _fileName);
         }
 
-        private void loadFromFileToolStripMenuItem_Click(object sender, EventArgs e)
+        private void LoadFromFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenFileDialog fileDialog = new OpenFileDialog();
             if (fileDialog.ShowDialog() == DialogResult.OK)
