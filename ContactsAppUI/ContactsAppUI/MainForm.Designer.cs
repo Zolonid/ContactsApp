@@ -28,12 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.MainTableLayout = new System.Windows.Forms.TableLayoutPanel();
             this.ContactInfoTableLayout = new System.Windows.Forms.TableLayoutPanel();
             this.VKIDLabel = new System.Windows.Forms.Label();
             this.MiddleNameLabel = new System.Windows.Forms.Label();
             this.LastNameLabel = new System.Windows.Forms.Label();
+            this.PhoneMaskedTextBox = new System.Windows.Forms.MaskedTextBox();
             this.BirthdayLabel = new System.Windows.Forms.Label();
             this.PhoneNumberLabel = new System.Windows.Forms.Label();
             this.EmailLabel = new System.Windows.Forms.Label();
@@ -42,7 +44,6 @@
             this.NameLabel = new System.Windows.Forms.Label();
             this.VKIDTextBox = new System.Windows.Forms.TextBox();
             this.EmailTextBox = new System.Windows.Forms.TextBox();
-            this.PhoneTextBox = new System.Windows.Forms.TextBox();
             this.BithdayDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.LastNameTextBox = new System.Windows.Forms.TextBox();
             this.Panel = new System.Windows.Forms.Panel();
@@ -65,6 +66,7 @@
             this.AddContactButton = new System.Windows.Forms.Button();
             this.EditContactButton = new System.Windows.Forms.Button();
             this.DeleteContactButton = new System.Windows.Forms.Button();
+            this.projectManagerBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.MainTableLayout.SuspendLayout();
             this.ContactInfoTableLayout.SuspendLayout();
             this.Panel.SuspendLayout();
@@ -72,6 +74,7 @@
             this.FindTextBoxSeparatorTableLayout.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.AddEditDeleteButtonsSeparatorTableLayout.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.projectManagerBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // MainTableLayout
@@ -99,6 +102,7 @@
             this.ContactInfoTableLayout.Controls.Add(this.VKIDLabel, 0, 6);
             this.ContactInfoTableLayout.Controls.Add(this.MiddleNameLabel, 0, 1);
             this.ContactInfoTableLayout.Controls.Add(this.LastNameLabel, 0, 2);
+            this.ContactInfoTableLayout.Controls.Add(this.PhoneMaskedTextBox, 1, 4);
             this.ContactInfoTableLayout.Controls.Add(this.BirthdayLabel, 0, 3);
             this.ContactInfoTableLayout.Controls.Add(this.PhoneNumberLabel, 0, 4);
             this.ContactInfoTableLayout.Controls.Add(this.EmailLabel, 0, 5);
@@ -107,7 +111,6 @@
             this.ContactInfoTableLayout.Controls.Add(this.NameLabel, 0, 0);
             this.ContactInfoTableLayout.Controls.Add(this.VKIDTextBox, 1, 6);
             this.ContactInfoTableLayout.Controls.Add(this.EmailTextBox, 1, 5);
-            this.ContactInfoTableLayout.Controls.Add(this.PhoneTextBox, 1, 4);
             this.ContactInfoTableLayout.Controls.Add(this.BithdayDateTimePicker, 1, 3);
             this.ContactInfoTableLayout.Controls.Add(this.LastNameTextBox, 1, 2);
             this.ContactInfoTableLayout.Dock = System.Windows.Forms.DockStyle.Top;
@@ -167,6 +170,20 @@
             this.LastNameLabel.Text = "Last Name";
             this.LastNameLabel.TextAlign = System.Drawing.ContentAlignment.BottomRight;
             // 
+            // PhoneMaskedTextBox
+            // 
+            this.PhoneMaskedTextBox.BackColor = System.Drawing.Color.White;
+            this.PhoneMaskedTextBox.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.PhoneMaskedTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.PhoneMaskedTextBox.Location = new System.Drawing.Point(125, 191);
+            this.PhoneMaskedTextBox.Margin = new System.Windows.Forms.Padding(0, 0, 5, 0);
+            this.PhoneMaskedTextBox.Mask = "+7 (999) 000-0000";
+            this.PhoneMaskedTextBox.Name = "PhoneMaskedTextBox";
+            this.PhoneMaskedTextBox.ReadOnly = true;
+            this.PhoneMaskedTextBox.Size = new System.Drawing.Size(328, 29);
+            this.PhoneMaskedTextBox.TabIndex = 5;
+            this.PhoneMaskedTextBox.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
+            // 
             // BirthdayLabel
             // 
             this.BirthdayLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -211,23 +228,25 @@
             // 
             // NameTextBox
             // 
+            this.NameTextBox.BackColor = System.Drawing.Color.White;
             this.NameTextBox.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.NameTextBox.Enabled = false;
             this.NameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.NameTextBox.Location = new System.Drawing.Point(125, 18);
             this.NameTextBox.Margin = new System.Windows.Forms.Padding(0, 0, 5, 0);
             this.NameTextBox.Name = "NameTextBox";
+            this.NameTextBox.ReadOnly = true;
             this.NameTextBox.Size = new System.Drawing.Size(328, 26);
             this.NameTextBox.TabIndex = 6;
             // 
             // MiddleNameTextBox
             // 
+            this.MiddleNameTextBox.BackColor = System.Drawing.Color.White;
             this.MiddleNameTextBox.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.MiddleNameTextBox.Enabled = false;
             this.MiddleNameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.MiddleNameTextBox.Location = new System.Drawing.Point(125, 62);
             this.MiddleNameTextBox.Margin = new System.Windows.Forms.Padding(0, 0, 5, 0);
             this.MiddleNameTextBox.Name = "MiddleNameTextBox";
+            this.MiddleNameTextBox.ReadOnly = true;
             this.MiddleNameTextBox.Size = new System.Drawing.Size(328, 26);
             this.MiddleNameTextBox.TabIndex = 7;
             // 
@@ -245,36 +264,27 @@
             // 
             // VKIDTextBox
             // 
+            this.VKIDTextBox.BackColor = System.Drawing.Color.White;
             this.VKIDTextBox.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.VKIDTextBox.Enabled = false;
             this.VKIDTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.VKIDTextBox.Location = new System.Drawing.Point(125, 285);
             this.VKIDTextBox.Margin = new System.Windows.Forms.Padding(0, 0, 5, 0);
             this.VKIDTextBox.Name = "VKIDTextBox";
+            this.VKIDTextBox.ReadOnly = true;
             this.VKIDTextBox.Size = new System.Drawing.Size(328, 26);
             this.VKIDTextBox.TabIndex = 11;
             // 
             // EmailTextBox
             // 
+            this.EmailTextBox.BackColor = System.Drawing.Color.White;
             this.EmailTextBox.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.EmailTextBox.Enabled = false;
             this.EmailTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.EmailTextBox.Location = new System.Drawing.Point(125, 238);
             this.EmailTextBox.Margin = new System.Windows.Forms.Padding(0, 0, 5, 0);
             this.EmailTextBox.Name = "EmailTextBox";
+            this.EmailTextBox.ReadOnly = true;
             this.EmailTextBox.Size = new System.Drawing.Size(328, 26);
             this.EmailTextBox.TabIndex = 10;
-            // 
-            // PhoneTextBox
-            // 
-            this.PhoneTextBox.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.PhoneTextBox.Enabled = false;
-            this.PhoneTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.PhoneTextBox.Location = new System.Drawing.Point(125, 194);
-            this.PhoneTextBox.Margin = new System.Windows.Forms.Padding(0, 0, 5, 0);
-            this.PhoneTextBox.Name = "PhoneTextBox";
-            this.PhoneTextBox.Size = new System.Drawing.Size(328, 26);
-            this.PhoneTextBox.TabIndex = 9;
             // 
             // BithdayDateTimePicker
             // 
@@ -290,12 +300,13 @@
             // 
             // LastNameTextBox
             // 
+            this.LastNameTextBox.BackColor = System.Drawing.Color.White;
             this.LastNameTextBox.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.LastNameTextBox.Enabled = false;
             this.LastNameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.LastNameTextBox.Location = new System.Drawing.Point(125, 106);
             this.LastNameTextBox.Margin = new System.Windows.Forms.Padding(0, 0, 5, 0);
             this.LastNameTextBox.Name = "LastNameTextBox";
+            this.LastNameTextBox.ReadOnly = true;
             this.LastNameTextBox.Size = new System.Drawing.Size(328, 26);
             this.LastNameTextBox.TabIndex = 13;
             // 
@@ -520,12 +531,17 @@
             this.DeleteContactButton.UseVisualStyleBackColor = true;
             this.DeleteContactButton.Click += new System.EventHandler(this.DeleteContactButton_Click);
             // 
+            // projectManagerBindingSource
+            // 
+            this.projectManagerBindingSource.DataSource = typeof(ContactsApp.ProjectManager);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(704, 366);
             this.Controls.Add(this.MainTableLayout);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.MaximumSize = new System.Drawing.Size(1920, 1080);
             this.MinimumSize = new System.Drawing.Size(480, 270);
@@ -543,6 +559,7 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.AddEditDeleteButtonsSeparatorTableLayout.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.projectManagerBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -559,7 +576,6 @@
         private System.Windows.Forms.Label EmailLabel;
         private System.Windows.Forms.TextBox NameTextBox;
         private System.Windows.Forms.TextBox MiddleNameTextBox;
-        private System.Windows.Forms.TextBox PhoneTextBox;
         private System.Windows.Forms.TextBox EmailTextBox;
         private System.Windows.Forms.TextBox VKIDTextBox;
         private System.Windows.Forms.Panel Panel;
@@ -585,6 +601,8 @@
         private System.Windows.Forms.ToolStripMenuItem addContactToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem editContactToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem deleteContactToolStripMenuItem;
+        private System.Windows.Forms.MaskedTextBox PhoneMaskedTextBox;
+        private System.Windows.Forms.BindingSource projectManagerBindingSource;
     }
 }
 

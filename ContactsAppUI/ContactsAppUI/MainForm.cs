@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -16,39 +17,31 @@ namespace ContactsAppUI
     public partial class MainForm : Form
     {
         public string _filePath;
-        public static string _fileName = "json.txt";
-        public Project _projectData;
+        public static string _fileName = "Contacts.data";
+        private BindingList<Contact> _bindingList;
 
         public MainForm()
         {
             InitializeComponent();
 
             _filePath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            _projectData = new Project();
+            //_projectData = new Project();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            if(File.Exists(_filePath + @"\" + _fileName)){
-                _projectData = ProjectManager.LoadFromFile(_filePath + @"\" + _fileName);
-
-                RefreshListBox();
-            }
-        }
-        /// <summary>
-        /// Reloads contacts from _projectData to listbox on MainForm
-        /// </summary>
-        private void RefreshListBox()
-        {
-            ContactsListBox.Items.Clear();
-
-            foreach (var contact in _projectData.ContactList)
+            if (File.Exists(_filePath + @"\" + _fileName))
             {
-                string Name = contact.Name[0] + ' ' + contact.Name[1] + ' ' + contact.Name[2];
+                _bindingList = new BindingList<Contact>(ProjectManager.LoadFromFile(_filePath + @"\" + _fileName).ContactList);
 
-                ContactsListBox.Items.Add(Name);
+                //RefreshListBox();
+            }
+            else
+            {
+                _bindingList = new BindingList<Contact>();
             }
 
+            ContactsListBox.DataSource = _bindingList;
         }
 
         /// <summary>
@@ -56,17 +49,19 @@ namespace ContactsAppUI
         /// </summary>
         private void RefreshContactInfo()
         {
-            if (_projectData.ContactList.Count != 0)
+            if (_bindingList.Count != 0)
             {
                 var index = ContactsListBox.SelectedIndex;
-                Contact selectedContact = index == -1 ? _projectData.ContactList.Last() : _projectData.ContactList[index];
+
+                Contact selectedContact = index == -1 ? _bindingList.Last() : _bindingList[index];
+
                 NameTextBox.Text = selectedContact.Name[0];
                 MiddleNameTextBox.Text = selectedContact.Name[1];
                 LastNameTextBox.Text = selectedContact.Name[2];
 
-                BithdayDateTimePicker.Text = selectedContact.Birthday.ToString();
+                BithdayDateTimePicker.Text = selectedContact.Birthday.ToString(CultureInfo.InvariantCulture);
 
-                PhoneTextBox.Text = selectedContact.PhoneNumber.ZoneCode + selectedContact.PhoneNumber.Number;
+                PhoneMaskedTextBox.Text = selectedContact.PhoneNumber.ZoneCode + selectedContact.PhoneNumber.Number;
 
                 EmailTextBox.Text = selectedContact.Email;
                 VKIDTextBox.Text = selectedContact.VKID;
@@ -88,7 +83,7 @@ namespace ContactsAppUI
 
             BithdayDateTimePicker.Text = "";
 
-            PhoneTextBox.Text = "";
+            PhoneMaskedTextBox.Text = "";
 
             EmailTextBox.Text = "";
             VKIDTextBox.Text = "";
@@ -110,34 +105,33 @@ namespace ContactsAppUI
                     new DateTime(1999, 06, 12),
                     "GenericEmail@gmail.com",
                     "123456");
-                _projectData.ContactList.Add(contacts[i]);
+                _bindingList.Add(contacts[i]);
             }
 
             //Save to file
-            ProjectManager.SaveToFile(_projectData, _filePath + @"\" + _fileName);
+            ProjectManager.SaveToFile(new Project(_bindingList.ToList()), _filePath + @"\" + _fileName);
 
             //Delete initialized contacts
-            _projectData = null;
+            _bindingList = null;
 
             //Loading contacs from file
-            _projectData = ProjectManager.LoadFromFile(_filePath + @"\" + _fileName);
+            _bindingList = new BindingList<Contact>(ProjectManager.LoadFromFile(_filePath + @"\" + _fileName).ContactList);
         }
 
         private void AddContactButton_Click(object sender, EventArgs e)
         {
-            int index = ContactsListBox.SelectedIndex;
-            var editContactForm = new EditContactForm();
+            EditContactForm editContactForm = new EditContactForm();
+
             DialogResult dr = editContactForm.ShowDialog(this);
+
             if (dr == DialogResult.Cancel)
             {
                 editContactForm.Close();
             }
             else if (dr == DialogResult.OK)
             {
-                _projectData.ContactList.Add(editContactForm.currentContact);
+                _bindingList.Add(editContactForm.CurrentContact);
                 editContactForm.Close();
-
-                RefreshListBox();
 
                 RefreshContactInfo();
             }
@@ -145,21 +139,21 @@ namespace ContactsAppUI
 
         private void EditContactButton_Click(object sender, EventArgs e)
         {
-            int index = ContactsListBox.SelectedIndex;
             EditContactForm editContactForm = new EditContactForm();
-            editContactForm.currentContact = _projectData.ContactList[ContactsListBox.SelectedIndex];
-            DialogResult dr = editContactForm.ShowDialog(this);
-            if (dr == DialogResult.Cancel)
-            {
-                editContactForm.Close();
-            }
-            else if (dr == DialogResult.OK)
-            {
-                _projectData.ContactList[ContactsListBox.SelectedIndex] = editContactForm.currentContact;
-                editContactForm.Close();
-            }
 
-            RefreshListBox();
+            editContactForm.CurrentContact = _bindingList[ContactsListBox.SelectedIndex];
+
+            DialogResult dr = editContactForm.ShowDialog(this);
+            switch (dr)
+            {
+                case DialogResult.Cancel:
+                    editContactForm.Close();
+                    break;
+                case DialogResult.OK:
+                    _bindingList[ContactsListBox.SelectedIndex] = editContactForm.CurrentContact;
+                    editContactForm.Close();
+                    break;
+            }
 
             RefreshContactInfo();
         }
@@ -171,14 +165,13 @@ namespace ContactsAppUI
 
         private void DeleteContactButton_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Do you want to delete selected contact?", "Confirmation",
+            if (MessageBox.Show(
+                "Do you want to delete selected contact?",
+                "Confirmation",
                 MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                _projectData.ContactList.RemoveAt(ContactsListBox.SelectedIndex);
-
-                RefreshListBox();
-
-                ClearContactInfo();
+                _bindingList.Remove((Contact) ContactsListBox.SelectedItem);
+                RefreshContactInfo();
             }
         }
 
@@ -189,23 +182,29 @@ namespace ContactsAppUI
 
         private void SaveToFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FolderBrowserDialog folderDialog = new FolderBrowserDialog();
-            if (folderDialog.ShowDialog() == DialogResult.OK)
-                ProjectManager.SaveToFile(_projectData, folderDialog.SelectedPath + @"\" + _fileName);
+            SaveFileDialog fileDialog = new SaveFileDialog()
+            {
+                AddExtension = true,
+                Filter = "Saved Contacts| *.data| All Files| *.*",
+                FileName = "Contacts"
+            };
+
+            if (fileDialog.ShowDialog() == DialogResult.OK)
+                ProjectManager.SaveToFile(new Project(_bindingList.ToList()), fileDialog.FileName);
         }
 
         private void LoadFromFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenFileDialog fileDialog = new OpenFileDialog();
+            OpenFileDialog fileDialog = new OpenFileDialog()
+            {
+                Filter = "Saved Contacts| *.data| All Files| *.*"
+            };
+
             if (fileDialog.ShowDialog() == DialogResult.OK)
             {
-                _projectData = ProjectManager.LoadFromFile(fileDialog.FileName);
-                RefreshListBox();
+                _bindingList = new BindingList<Contact>(ProjectManager.LoadFromFile(fileDialog.FileName).ContactList);
+                ContactsListBox.DataSource = _bindingList;
             }
-
-
         }
-
-
     }
 }

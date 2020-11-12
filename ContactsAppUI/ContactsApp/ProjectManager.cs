@@ -46,6 +46,5 @@ namespace ContactsApp
                 return (Project) serializer.Deserialize<Project>(reader);
             }
         }
-        
     }
 }

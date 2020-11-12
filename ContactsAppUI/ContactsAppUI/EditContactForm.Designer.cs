@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditContactForm));
             this.panel1 = new System.Windows.Forms.Panel();
             this.CancelButton = new System.Windows.Forms.Button();
             this.AcceptButton = new System.Windows.Forms.Button();
@@ -43,9 +44,9 @@
             this.NameLabel = new System.Windows.Forms.Label();
             this.VKIDTextBox = new System.Windows.Forms.TextBox();
             this.EmailTextBox = new System.Windows.Forms.TextBox();
-            this.PhoneTextBox = new System.Windows.Forms.TextBox();
             this.BithdayDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.LastNameTextBox = new System.Windows.Forms.TextBox();
+            this.PhoneMaskedTextBox = new System.Windows.Forms.MaskedTextBox();
             this.panel1.SuspendLayout();
             this.ContactInfoTableLayout.SuspendLayout();
             this.SuspendLayout();
@@ -97,9 +98,9 @@
             this.ContactInfoTableLayout.Controls.Add(this.NameLabel, 0, 0);
             this.ContactInfoTableLayout.Controls.Add(this.VKIDTextBox, 1, 6);
             this.ContactInfoTableLayout.Controls.Add(this.EmailTextBox, 1, 5);
-            this.ContactInfoTableLayout.Controls.Add(this.PhoneTextBox, 1, 4);
             this.ContactInfoTableLayout.Controls.Add(this.BithdayDateTimePicker, 1, 3);
             this.ContactInfoTableLayout.Controls.Add(this.LastNameTextBox, 1, 2);
+            this.ContactInfoTableLayout.Controls.Add(this.PhoneMaskedTextBox, 1, 4);
             this.ContactInfoTableLayout.Dock = System.Windows.Forms.DockStyle.Top;
             this.ContactInfoTableLayout.Location = new System.Drawing.Point(0, 0);
             this.ContactInfoTableLayout.Margin = new System.Windows.Forms.Padding(0);
@@ -254,17 +255,6 @@
             this.EmailTextBox.Size = new System.Drawing.Size(454, 26);
             this.EmailTextBox.TabIndex = 5;
             // 
-            // PhoneTextBox
-            // 
-            this.PhoneTextBox.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.PhoneTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.PhoneTextBox.Location = new System.Drawing.Point(125, 194);
-            this.PhoneTextBox.Margin = new System.Windows.Forms.Padding(0, 0, 5, 0);
-            this.PhoneTextBox.Name = "PhoneTextBox";
-            this.PhoneTextBox.Size = new System.Drawing.Size(454, 26);
-            this.PhoneTextBox.TabIndex = 4;
-            this.PhoneTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.BanSpecialSymbols);
-            // 
             // BithdayDateTimePicker
             // 
             this.BithdayDateTimePicker.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 14F);
@@ -287,6 +277,18 @@
             this.LastNameTextBox.TabIndex = 2;
             this.LastNameTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.BanSpecialSymbols);
             // 
+            // PhoneMaskedTextBox
+            // 
+            this.PhoneMaskedTextBox.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.PhoneMaskedTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.PhoneMaskedTextBox.Location = new System.Drawing.Point(125, 194);
+            this.PhoneMaskedTextBox.Margin = new System.Windows.Forms.Padding(0, 0, 5, 0);
+            this.PhoneMaskedTextBox.Mask = "+7 (999) 000-0000";
+            this.PhoneMaskedTextBox.Name = "PhoneMaskedTextBox";
+            this.PhoneMaskedTextBox.Size = new System.Drawing.Size(454, 26);
+            this.PhoneMaskedTextBox.TabIndex = 15;
+            this.PhoneMaskedTextBox.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
+            // 
             // EditContactForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -294,10 +296,11 @@
             this.ClientSize = new System.Drawing.Size(584, 361);
             this.Controls.Add(this.ContactInfoTableLayout);
             this.Controls.Add(this.panel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(600, 400);
             this.MinimumSize = new System.Drawing.Size(600, 400);
             this.Name = "EditContactForm";
-            this.Text = "Form1";
+            this.Text = "Add/Edit Contact";
             this.Load += new System.EventHandler(this.EditContactForm_Load);
             this.panel1.ResumeLayout(false);
             this.ContactInfoTableLayout.ResumeLayout(false);
@@ -323,8 +326,8 @@
         private System.Windows.Forms.Label NameLabel;
         private System.Windows.Forms.TextBox VKIDTextBox;
         private System.Windows.Forms.TextBox EmailTextBox;
-        private System.Windows.Forms.TextBox PhoneTextBox;
         private System.Windows.Forms.DateTimePicker BithdayDateTimePicker;
         private System.Windows.Forms.TextBox LastNameTextBox;
+        private System.Windows.Forms.MaskedTextBox PhoneMaskedTextBox;
     }
 }

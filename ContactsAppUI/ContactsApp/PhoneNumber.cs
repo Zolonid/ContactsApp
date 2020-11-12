@@ -9,15 +9,15 @@ namespace ContactsApp
         private string _number;
 
         /// <summary>
-        /// Contains zone code (3-4 digits after county code)
+        /// Contains zone code (3 digits after county code)
         /// </summary>
         public string ZoneCode
         {
             get => _zoneCode;
             set
             {
-                if (value.Length > 4)
-                    throw new Exception("Zone code is too long.");
+                if (value.Length > 3)
+                    throw new ArgumentException("Zone code is too long.");
 
                 _zoneCode = value;
             }
@@ -32,7 +32,7 @@ namespace ContactsApp
             set
             {
                 if (value.Length > 7)
-                    throw new Exception("Number is too long.");
+                    throw new ArgumentException("Number is too long.");
 
                 _number = value;
             }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace ContactsApp
 {
@@ -18,6 +19,22 @@ namespace ContactsApp
         public Project()
         {
             ContactList = new List<Contact>(200);
+        }
+
+        /// <summary>
+        /// Constructor that assigns specified contact list
+        /// </summary>
+        /// <param name="contactList">Maximim count of items in list is 200.</param>
+        public Project(List<Contact> contactList)
+        {
+            if (contactList.Count > 200)
+            {
+                throw new ArgumentException("Contact list is too big.");
+            }
+            else
+            {
+                ContactList = contactList;
+            }
         }
     }
 }

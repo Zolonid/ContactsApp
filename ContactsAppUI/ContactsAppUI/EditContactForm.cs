@@ -19,26 +19,26 @@ namespace ContactsAppUI
             InitializeComponent();
         }
 
-        public Contact currentContact;
+        public Contact CurrentContact;
 
         private void EditContactForm_Load(object sender, EventArgs e)
         {
-            if (currentContact != null)
+            if (CurrentContact != null)
             {
-                NameTextBox.Text = currentContact.Name[0];
-                MiddleNameTextBox.Text = currentContact.Name[1];
-                LastNameTextBox.Text = currentContact.Name[2];
+                NameTextBox.Text = CurrentContact.Name[0];
+                MiddleNameTextBox.Text = CurrentContact.Name[1];
+                LastNameTextBox.Text = CurrentContact.Name[2];
 
-                BithdayDateTimePicker.Text = currentContact.Birthday.ToString();
+                BithdayDateTimePicker.Text = CurrentContact.Birthday.ToString();
 
-                PhoneTextBox.Text = currentContact.PhoneNumber.ZoneCode + currentContact.PhoneNumber.Number;
+                PhoneMaskedTextBox.Text = CurrentContact.PhoneNumber.ZoneCode + CurrentContact.PhoneNumber.Number;
 
-                EmailTextBox.Text = currentContact.Email;
-                VKIDTextBox.Text = currentContact.VKID;
+                EmailTextBox.Text = CurrentContact.Email;
+                VKIDTextBox.Text = CurrentContact.VKID;
             }
             else
             {
-                currentContact = new Contact();
+                CurrentContact = new Contact();
             }
         }
 
@@ -46,17 +46,17 @@ namespace ContactsAppUI
         {
             try
             {
-                currentContact.Name[0] = NameTextBox.Text;
-                currentContact.Name[1] = MiddleNameTextBox.Text;
-                currentContact.Name[2] = LastNameTextBox.Text;
+                CurrentContact.Name[0] = NameTextBox.Text;
+                CurrentContact.Name[1] = MiddleNameTextBox.Text;
+                CurrentContact.Name[2] = LastNameTextBox.Text;
 
-                currentContact.Birthday = BithdayDateTimePicker.Value;
+                CurrentContact.Birthday = BithdayDateTimePicker.Value;
 
-                currentContact.PhoneNumber.ZoneCode = PhoneTextBox.Text.Substring(0, 3);
-                currentContact.PhoneNumber.Number = PhoneTextBox.Text.Substring(3, 7);
+                CurrentContact.PhoneNumber.ZoneCode = PhoneMaskedTextBox.Text.Substring(0, 3);
+                CurrentContact.PhoneNumber.Number = PhoneMaskedTextBox.Text.Substring(3, 7);
 
-                currentContact.Email = EmailTextBox.Text;
-                currentContact.VKID = VKIDTextBox.Text;
+                CurrentContact.Email = EmailTextBox.Text;
+                CurrentContact.VKID = VKIDTextBox.Text;
 
                 this.DialogResult = DialogResult.OK;
             }

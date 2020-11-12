@@ -31,7 +31,7 @@ namespace ContactsApp
                     if (value[i] != null)
                     {
                         if (value[i].Length > 50)
-                            throw new Exception("Name is too long.");
+                            throw new ArgumentException("Name is too long.");
 
                         if (value[i] != string.Empty)
                             _name[i] = value[i].Substring(0, 1).ToUpper() + value[i].Substring(1).ToLower();
@@ -60,7 +60,7 @@ namespace ContactsApp
             {
                 //Date must be beetwen 01.01.1900 and now
                 if (value.Year < 1900 || value > DateTime.Now)
-                    throw new Exception("Birthday date cannot be sooner than 20 century.");
+                    throw new ArgumentException(message: "Birthday date cannot be sooner than 20 century and later than now.");
 
                 _birthday = value;
             }
@@ -75,7 +75,7 @@ namespace ContactsApp
             set
             {
                 if (value.Length > 50)
-                    throw new Exception("Email is too long.");
+                    throw new ArgumentException("Email is too long.");
 
                 _email = value;
             }
@@ -90,7 +90,7 @@ namespace ContactsApp
             set
             {
                 if (value.Length > 15)
-                    throw new Exception("VK ID is too long.");
+                    throw new ArgumentException("VK ID is too long.");
 
                 _vkid = value;
             }
@@ -131,6 +131,15 @@ namespace ContactsApp
         {
             Contact clone = new Contact(Name, PhoneNumber, Birthday, Email, VKID);
             return clone;
+        }
+
+        /// <summary>
+        /// Return Person's name in form "Name MiddleName LastName"
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString()
+        {
+            return Name[0] + " " + Name[1] + " " + Name[2];
         }
     }
 }
