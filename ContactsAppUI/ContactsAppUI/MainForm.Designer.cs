@@ -67,6 +67,7 @@
             this.EditContactButton = new System.Windows.Forms.Button();
             this.DeleteContactButton = new System.Windows.Forms.Button();
             this.projectManagerBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MainTableLayout.SuspendLayout();
             this.ContactInfoTableLayout.SuspendLayout();
             this.Panel.SuspendLayout();
@@ -467,6 +468,8 @@
             // 
             // helpToolStripMenuItem
             // 
+            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.aboutToolStripMenuItem});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.helpToolStripMenuItem.Text = "Help";
@@ -533,7 +536,14 @@
             // 
             // projectManagerBindingSource
             // 
-            this.projectManagerBindingSource.DataSource = typeof(ContactsApp.ProjectManager);
+            this.projectManagerBindingSource.DataSource = typeof(void);
+            // 
+            // aboutToolStripMenuItem
+            // 
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.aboutToolStripMenuItem.Text = "About";
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.AboutToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -559,7 +569,7 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.AddEditDeleteButtonsSeparatorTableLayout.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.projectManagerBindingSource)).EndInit();
+            //((System.ComponentModel.ISupportInitialize)(this.projectManagerBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -603,6 +613,7 @@
         private System.Windows.Forms.ToolStripMenuItem deleteContactToolStripMenuItem;
         private System.Windows.Forms.MaskedTextBox PhoneMaskedTextBox;
         private System.Windows.Forms.BindingSource projectManagerBindingSource;
+        private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
     }
 }
 

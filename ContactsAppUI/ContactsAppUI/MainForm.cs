@@ -206,5 +206,12 @@ namespace ContactsAppUI
                 ContactsListBox.DataSource = _bindingList;
             }
         }
+
+        private void AboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AboutForm aboutForm = new AboutForm();
+            aboutForm.ShowDialog();
+
+        }
     }
 }
