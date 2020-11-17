@@ -25,7 +25,6 @@ namespace ContactsAppUI
             InitializeComponent();
 
             _filePath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            //_projectData = new Project();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -33,8 +32,6 @@ namespace ContactsAppUI
             if (File.Exists(_filePath + @"\" + _fileName))
             {
                 _bindingList = new BindingList<Contact>(ProjectManager.LoadFromFile(_filePath + @"\" + _fileName).ContactList);
-
-                //RefreshListBox();
             }
             else
             {
@@ -55,9 +52,10 @@ namespace ContactsAppUI
 
                 Contact selectedContact = index == -1 ? _bindingList.Last() : _bindingList[index];
 
-                NameTextBox.Text = selectedContact.Name[0];
-                MiddleNameTextBox.Text = selectedContact.Name[1];
-                LastNameTextBox.Text = selectedContact.Name[2];
+                var name = selectedContact.Name;
+                NameTextBox.Text = name[0];
+                MiddleNameTextBox.Text = name[1];
+                LastNameTextBox.Text = name[2];
 
                 BithdayDateTimePicker.Text = selectedContact.Birthday.ToString(CultureInfo.InvariantCulture);
 

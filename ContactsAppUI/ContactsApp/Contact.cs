@@ -16,19 +16,19 @@ namespace ContactsApp
         private string _vkid;
 
         /// <summary>
-        /// Contains contact's First name => [0], Middle name => [1] and Last name => [2] up to 50 characters.
+        /// Contains _contact's First name => [0], Middle name => [1] and Last name => [2] up to 50 characters.
         /// </summary>
         public string[] Name
         {
             get => _name;
             set
             {
-                if (_name == null)
-                    _name = new string[3] {"", "", ""};
+                if (value == null)
+                    throw new ArgumentNullException("Name is null.");
 
                 for (int i = 0; i < 3; i++)
                 {
-                    if (value[i] != null)
+                    if (value[i] != String.Empty)
                     {
                         if (value[i].Length > 50)
                             throw new ArgumentException("Name is too long.");
@@ -36,18 +36,18 @@ namespace ContactsApp
                         if (value[i] != string.Empty)
                             _name[i] = value[i].Substring(0, 1).ToUpper() + value[i].Substring(1).ToLower();
                     }
+                    else throw new ArgumentException($"Name[{i}] is empty string.");
                 }
             }
-
         }
 
         /// <summary>
-        /// Contains contact's number.
+        /// Contains _contact's number.
         /// </summary>
         public PhoneNumber PhoneNumber
         {
             get => _phoneNumber;
-            set => _phoneNumber = value;
+            set => _phoneNumber = value ?? throw new ArgumentNullException("PhoneNumber is null.");
         }
 
         /// <summary>

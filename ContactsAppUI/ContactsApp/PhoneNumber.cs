@@ -16,6 +16,9 @@ namespace ContactsApp
             get => _zoneCode;
             set
             {
+                if (value == string.Empty)
+                    throw new ArgumentException("Zone code is empty string.");
+
                 if (value.Length > 3)
                     throw new ArgumentException("Zone code is too long.");
 
@@ -31,6 +34,9 @@ namespace ContactsApp
             get => _number;
             set
             {
+                if (value == string.Empty)
+                    throw new ArgumentException("Number is empty string.");
+
                 if (value.Length > 7)
                     throw new ArgumentException("Number is too long.");
 
@@ -43,8 +49,8 @@ namespace ContactsApp
         /// </summary>
         public PhoneNumber()
         {
-            ZoneCode = "";
-            Number = "";
+            _zoneCode = "";
+            _number = "";
         }
 
         /// <summary>

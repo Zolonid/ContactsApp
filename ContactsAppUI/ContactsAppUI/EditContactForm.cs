@@ -25,9 +25,10 @@ namespace ContactsAppUI
         {
             if (CurrentContact != null)
             {
-                NameTextBox.Text = CurrentContact.Name[0];
-                MiddleNameTextBox.Text = CurrentContact.Name[1];
-                LastNameTextBox.Text = CurrentContact.Name[2];
+                var name = CurrentContact.Name;
+                NameTextBox.Text = name[0];
+                MiddleNameTextBox.Text = name[1];
+                LastNameTextBox.Text = name[2];
 
                 BithdayDateTimePicker.Text = CurrentContact.Birthday.ToString();
 
@@ -46,9 +47,7 @@ namespace ContactsAppUI
         {
             try
             {
-                CurrentContact.Name[0] = NameTextBox.Text;
-                CurrentContact.Name[1] = MiddleNameTextBox.Text;
-                CurrentContact.Name[2] = LastNameTextBox.Text;
+                CurrentContact.Name = new[] {NameTextBox.Text, MiddleNameTextBox.Text, LastNameTextBox.Text};
 
                 CurrentContact.Birthday = BithdayDateTimePicker.Value;
 

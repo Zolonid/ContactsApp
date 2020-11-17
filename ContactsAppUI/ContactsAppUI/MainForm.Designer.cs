@@ -62,12 +62,12 @@
             this.editContactToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteContactToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AddEditDeleteButtonsSeparatorTableLayout = new System.Windows.Forms.TableLayoutPanel();
             this.AddContactButton = new System.Windows.Forms.Button();
             this.EditContactButton = new System.Windows.Forms.Button();
             this.DeleteContactButton = new System.Windows.Forms.Button();
             this.projectManagerBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MainTableLayout.SuspendLayout();
             this.ContactInfoTableLayout.SuspendLayout();
             this.Panel.SuspendLayout();
@@ -326,6 +326,8 @@
             // 
             this.ContactsListBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ContactsListBox.FormattingEnabled = true;
+            this.ContactsListBox.Items.AddRange(new object[] {
+            ""});
             this.ContactsListBox.Location = new System.Drawing.Point(0, 59);
             this.ContactsListBox.Name = "ContactsListBox";
             this.ContactsListBox.Size = new System.Drawing.Size(246, 252);
@@ -474,6 +476,13 @@
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.helpToolStripMenuItem.Text = "Help";
             // 
+            // aboutToolStripMenuItem
+            // 
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.aboutToolStripMenuItem.Text = "About";
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.AboutToolStripMenuItem_Click);
+            // 
             // AddEditDeleteButtonsSeparatorTableLayout
             // 
             this.AddEditDeleteButtonsSeparatorTableLayout.ColumnCount = 3;
@@ -534,17 +543,6 @@
             this.DeleteContactButton.UseVisualStyleBackColor = true;
             this.DeleteContactButton.Click += new System.EventHandler(this.DeleteContactButton_Click);
             // 
-            // projectManagerBindingSource
-            // 
-            this.projectManagerBindingSource.DataSource = typeof(void);
-            // 
-            // aboutToolStripMenuItem
-            // 
-            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.aboutToolStripMenuItem.Text = "About";
-            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.AboutToolStripMenuItem_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -569,7 +567,7 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.AddEditDeleteButtonsSeparatorTableLayout.ResumeLayout(false);
-            //((System.ComponentModel.ISupportInitialize)(this.projectManagerBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.projectManagerBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
