@@ -139,7 +139,8 @@ namespace ContactsApp
         /// <returns></returns>
         public override string ToString()
         {
-            return Name[0] + " " + Name[1] + " " + Name[2];
+            var name = Name;
+            return name[0] + " " + name[1] + " " + name[2];
         }
     }
 }

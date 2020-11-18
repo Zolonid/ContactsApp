@@ -57,7 +57,7 @@ namespace ContactsAppUI
                 MiddleNameTextBox.Text = name[1];
                 LastNameTextBox.Text = name[2];
 
-                BithdayDateTimePicker.Text = selectedContact.Birthday.ToString(CultureInfo.InvariantCulture);
+                BithdayDateTimePicker.Text = selectedContact.Birthday.ToString();
 
                 PhoneMaskedTextBox.Text = selectedContact.PhoneNumber.ZoneCode + selectedContact.PhoneNumber.Number;
 

@@ -132,5 +132,14 @@ namespace ContactsApp.UnitTests
                 },
                 Message);
         }
+
+        [TestCase(new string[3] {"AaAaAaAa", "BbBbBbBb", "CcCcCcCc"}, 
+            new string[3] { "Aaaaaaaa", "Bbbbbbbb", "Cccccccc" }, 
+            "Must correct value to lowercase", TestName = "Testing convertion to lowercase.")]
+        public void TestNameSet_ArgumentException(string[] wrongName, string[] excpectedName,string Message)
+        {
+            _contact.Name = wrongName;
+            Assert.AreEqual(excpectedName,_contact.Name);
+        }
     }
 }
