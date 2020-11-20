@@ -14,28 +14,33 @@ namespace ContactsApp.UnitTests
             _phoneNumber = new PhoneNumber();
         }
 
-        [Test]
-        public void TestZoneCodeSetGet_CorrectValue()
+        [TestCase("999",
+            "Must matchd expected value",
+            TestName = "Asserting correct string in ZoneCode")]
+        public void TestZoneCodeSetGet_CorrectValue(string expected, string Message)
         {
-            var expected = "999";
-
             _phoneNumber.ZoneCode = expected;
             var actual = _phoneNumber.ZoneCode;
             Assert.AreEqual(expected, actual, "ZoneCode setter/getter exception.");
         }
 
-        [Test]
-        public void TestNumberSetGet_CorrectValue()
+        [TestCase("9999999",
+            "Must matchd expected value",
+            TestName = "Asserting correct string in Number")]
+        public void TestNumberSetGet_CorrectValue(string expected, string Message)
         {
-            var expected = "9999999";
-
             _phoneNumber.Number = expected;
             var actual = _phoneNumber.Number;
             Assert.AreEqual(expected, actual, "Number setter/getter exception.");
         }
 
-        [TestCase("", "Must be ArgumentException", TestName = "Asserting empty string in Number")]
-        [TestCase("9999999999", "Must be ArgumentException", TestName = "Exceeding character limit in Number")]
+        [TestCase("",
+            "Must be ArgumentException",
+            TestName = "Asserting empty string in Number")]
+
+        [TestCase("9999999999",
+            "Must be ArgumentException",
+            TestName = "Exceeding character limit in Number")]
         public void TestNumberSet_ArgumentException(string wrongNumber, string Message)
         {
             Assert.Throws<ArgumentException>(() =>
@@ -45,8 +50,13 @@ namespace ContactsApp.UnitTests
                 Message);
         }
 
-        [TestCase("", "Must be ArgumentException", TestName = "Asserting empty string in ZoneCode")]
-        [TestCase("9999999999", "Must be ArgumentException", TestName = "Exceeding character limit in ZoneCode")]
+        [TestCase("",
+            "Must be ArgumentException",
+            TestName = "Asserting empty string in ZoneCode")]
+
+        [TestCase("9999999999",
+            "Must be ArgumentException",
+            TestName = "Exceeding character limit in ZoneCode")]
         public void TestZoneCodeSet_ArgumentException(string wrongZoneCode, string Message)
         {
             Assert.Throws<ArgumentException>(() =>
