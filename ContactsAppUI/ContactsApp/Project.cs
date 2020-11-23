@@ -36,5 +36,84 @@ namespace ContactsApp
                 ContactList = contactList;
             }
         }
+
+        /// <summary>
+        /// Search contact's LastName for specified string
+        /// </summary>
+        public List<Contact> FindInLastName(string searchedString)
+        {
+            List<Contact> searchedList = new List<Contact>();
+
+            foreach (var contact in ContactList)
+            {
+                if (contact.Name[2].Contains(searchedString))
+                    searchedList.Add(contact);
+            }
+
+            return searchedList;
+        }
+
+        /// <summary>
+        /// Search contact's MiddleName for specified string
+        /// </summary>
+        public List<Contact> FindInMiddleName(string searchedString)
+        {
+            List<Contact> searchedList = new List<Contact>();
+
+            foreach (var contact in ContactList)
+            {
+                if (contact.Name[1].Contains(searchedString))
+                    searchedList.Add(contact);
+            }
+
+            return searchedList;
+        }
+
+        /// <summary>
+        /// Search contact's Name for specified string
+        /// </summary>
+        public List<Contact> FindInName(string searchedString)
+        {
+            List<Contact> searchedList = new List<Contact>();
+
+            foreach (var contact in ContactList)
+            {
+                if (contact.Name[0].Contains(searchedString))
+                    searchedList.Add(contact);
+            }
+
+            return searchedList;
+        }
+
+        /// <summary>
+        /// Search contact's full name for specified string
+        /// </summary>
+        public List<Contact> FindInFullName(string searchedString)
+        {
+            List<Contact> searchedList = new List<Contact>();
+
+            //Adds every found by Name
+            searchedList.AddRange(this.FindInName(searchedString));
+
+            //Adds only unique contacts found by MiddleName
+            foreach (var contact in this.FindInMiddleName(searchedString))
+            {
+                if (!searchedList.Contains(contact))
+                {
+                    searchedList.Add(contact);
+                }
+            }
+
+            //Adds only unique contacts found by LastName
+            foreach (var contact in this.FindInLastName(searchedString))
+            {
+                if (!searchedList.Contains(contact))
+                {
+                    searchedList.Add(contact);
+                }
+            }
+
+            return searchedList;
+        }
     }
 }

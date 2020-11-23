@@ -7,7 +7,7 @@ namespace ContactsApp
     /// <summary>
     /// Contact class that contains person's name, phone number, birthday, email and vk id.
     /// </summary>
-    public class Contact
+    public class Contact : IComparable<Contact>
     {
         private string[] _name;
         private PhoneNumber _phoneNumber;
@@ -140,7 +140,36 @@ namespace ContactsApp
         public override string ToString()
         {
             var name = Name;
-            return name[0] + " " + name[1] + " " + name[2];
+            return name[2] + " " + name[0] + " " + name[1];
+        }
+
+        /// <summary>
+        /// Comparing order: LastName => Name => MiddleName
+        /// </summary>
+        public int CompareTo(Contact compareContact)
+        {
+            if (compareContact == null)
+            {
+                return 1;
+            }
+            else
+            {
+                if (compareContact.Name[2] != this.Name[2])
+                {
+                    return this.Name[2].CompareTo(compareContact.Name[2]);
+                }
+                else
+                {
+                    if (compareContact.Name[0] != this.Name[0])
+                    {
+                        return this.Name[0].CompareTo(compareContact.Name[0]);
+                    }
+                    else
+                    {
+                        return this.Name[1].CompareTo(compareContact.Name[1]);
+                    }
+                }
+            }
         }
     }
 }

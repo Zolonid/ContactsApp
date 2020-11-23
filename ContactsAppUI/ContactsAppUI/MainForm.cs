@@ -18,6 +18,7 @@ namespace ContactsAppUI
     {
         public string _filePath;
         public static string _fileName = "Contacts.data";
+        private Project _projectData;
         private BindingList<Contact> _bindingList;
 
         public MainForm()
@@ -31,11 +32,13 @@ namespace ContactsAppUI
         {
             if (File.Exists(_filePath + @"\" + _fileName))
             {
-                _bindingList = new BindingList<Contact>(ProjectManager.LoadFromFile(_filePath + @"\" + _fileName).ContactList);
+                _projectData = ProjectManager.LoadFromFile(_filePath + @"\" + _fileName);
+                _bindingList = new BindingList<Contact>(_projectData.ContactList);
             }
             else
             {
                 _bindingList = new BindingList<Contact>();
+                _projectData = new Project();
             }
 
             ContactsListBox.DataSource = _bindingList;
@@ -53,9 +56,9 @@ namespace ContactsAppUI
                 Contact selectedContact = index == -1 ? _bindingList.Last() : _bindingList[index];
 
                 var name = selectedContact.Name;
+                LastNameTextBox.Text = name[2];
                 NameTextBox.Text = name[0];
                 MiddleNameTextBox.Text = name[1];
-                LastNameTextBox.Text = name[2];
 
                 BithdayDateTimePicker.Text = selectedContact.Birthday.ToString();
 
@@ -75,9 +78,9 @@ namespace ContactsAppUI
         /// </summary>
         private void ClearContactInfo()
         {
+            LastNameTextBox.Text = "";
             NameTextBox.Text = "";
             MiddleNameTextBox.Text = "";
-            LastNameTextBox.Text = "";
 
             BithdayDateTimePicker.Text = "";
 
@@ -85,6 +88,17 @@ namespace ContactsAppUI
 
             EmailTextBox.Text = "";
             VKIDTextBox.Text = "";
+        }
+
+        /// <summary>
+        /// Sort ContactListBox (comparing order: LastName => Name => MiddleName)
+        /// </summary>
+        private void SortContactListBox()
+        {
+            var contactList = _bindingList.ToList();
+            contactList.Sort();
+            _bindingList = new BindingList<Contact>(contactList);
+            ContactsListBox.DataSource = _bindingList;
         }
 
         /// <summary>
@@ -131,6 +145,7 @@ namespace ContactsAppUI
                 _bindingList.Add(editContactForm.CurrentContact);
                 editContactForm.Close();
 
+                SortContactListBox();
                 RefreshContactInfo();
             }
         }
@@ -150,10 +165,13 @@ namespace ContactsAppUI
                 case DialogResult.OK:
                     _bindingList[ContactsListBox.SelectedIndex] = editContactForm.CurrentContact;
                     editContactForm.Close();
+
+                    SortContactListBox();
+                    RefreshContactInfo();
                     break;
             }
 
-            RefreshContactInfo();
+            
         }
 
         private void ContactsListBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -168,7 +186,10 @@ namespace ContactsAppUI
                 "Confirmation",
                 MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                _bindingList.Remove((Contact) ContactsListBox.SelectedItem);
+                _projectData.ContactList.Remove((Contact) ContactsListBox.SelectedItem);
+                _bindingList.Remove((Contact)ContactsListBox.SelectedItem);
+
+                SortContactListBox();
                 RefreshContactInfo();
             }
         }
@@ -188,7 +209,7 @@ namespace ContactsAppUI
             };
 
             if (fileDialog.ShowDialog() == DialogResult.OK)
-                ProjectManager.SaveToFile(new Project(_bindingList.ToList()), fileDialog.FileName);
+                ProjectManager.SaveToFile(_projectData, fileDialog.FileName);
         }
 
         private void LoadFromFileToolStripMenuItem_Click(object sender, EventArgs e)
@@ -200,7 +221,8 @@ namespace ContactsAppUI
 
             if (fileDialog.ShowDialog() == DialogResult.OK)
             {
-                _bindingList = new BindingList<Contact>(ProjectManager.LoadFromFile(fileDialog.FileName).ContactList);
+                _projectData = ProjectManager.LoadFromFile(fileDialog.FileName);
+                _bindingList = new BindingList<Contact>(_projectData.ContactList);
                 ContactsListBox.DataSource = _bindingList;
             }
         }
@@ -210,6 +232,36 @@ namespace ContactsAppUI
             AboutForm aboutForm = new AboutForm();
             aboutForm.ShowDialog();
 
+        }
+
+        private void FindContactTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (FindContactTextBox.Text != string.Empty)
+                {
+
+                    var findString = FindContactTextBox.Text;
+
+                    _bindingList = new BindingList<Contact>(_projectData.FindInFullName(findString));
+
+                    SortContactListBox();
+                }
+                else
+                {
+                    _bindingList = new BindingList<Contact>(_projectData.ContactList);
+
+                    SortContactListBox();
+                }
+            }
+        }
+
+        private void ContactsListBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Delete)
+            {
+                DeleteContactButton_Click(null, null);
+            }
         }
     }
 }

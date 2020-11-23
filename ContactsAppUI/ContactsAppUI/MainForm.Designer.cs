@@ -33,19 +33,19 @@
             this.MainTableLayout = new System.Windows.Forms.TableLayoutPanel();
             this.ContactInfoTableLayout = new System.Windows.Forms.TableLayoutPanel();
             this.VKIDLabel = new System.Windows.Forms.Label();
+            this.NameLabel = new System.Windows.Forms.Label();
             this.MiddleNameLabel = new System.Windows.Forms.Label();
-            this.LastNameLabel = new System.Windows.Forms.Label();
             this.PhoneMaskedTextBox = new System.Windows.Forms.MaskedTextBox();
             this.BirthdayLabel = new System.Windows.Forms.Label();
             this.PhoneNumberLabel = new System.Windows.Forms.Label();
             this.EmailLabel = new System.Windows.Forms.Label();
+            this.LastNameTextBox = new System.Windows.Forms.TextBox();
             this.NameTextBox = new System.Windows.Forms.TextBox();
-            this.MiddleNameTextBox = new System.Windows.Forms.TextBox();
-            this.NameLabel = new System.Windows.Forms.Label();
+            this.LastNameLabel = new System.Windows.Forms.Label();
             this.VKIDTextBox = new System.Windows.Forms.TextBox();
             this.EmailTextBox = new System.Windows.Forms.TextBox();
             this.BithdayDateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.LastNameTextBox = new System.Windows.Forms.TextBox();
+            this.MiddleNameTextBox = new System.Windows.Forms.TextBox();
             this.Panel = new System.Windows.Forms.Panel();
             this.ContactsListBox = new System.Windows.Forms.ListBox();
             this.SystemButtonsSeparatorTableLayout = new System.Windows.Forms.TableLayoutPanel();
@@ -101,19 +101,19 @@
             this.ContactInfoTableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 125F));
             this.ContactInfoTableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.ContactInfoTableLayout.Controls.Add(this.VKIDLabel, 0, 6);
-            this.ContactInfoTableLayout.Controls.Add(this.MiddleNameLabel, 0, 1);
-            this.ContactInfoTableLayout.Controls.Add(this.LastNameLabel, 0, 2);
+            this.ContactInfoTableLayout.Controls.Add(this.NameLabel, 0, 1);
+            this.ContactInfoTableLayout.Controls.Add(this.MiddleNameLabel, 0, 2);
             this.ContactInfoTableLayout.Controls.Add(this.PhoneMaskedTextBox, 1, 4);
             this.ContactInfoTableLayout.Controls.Add(this.BirthdayLabel, 0, 3);
             this.ContactInfoTableLayout.Controls.Add(this.PhoneNumberLabel, 0, 4);
             this.ContactInfoTableLayout.Controls.Add(this.EmailLabel, 0, 5);
-            this.ContactInfoTableLayout.Controls.Add(this.NameTextBox, 1, 0);
-            this.ContactInfoTableLayout.Controls.Add(this.MiddleNameTextBox, 1, 1);
-            this.ContactInfoTableLayout.Controls.Add(this.NameLabel, 0, 0);
+            this.ContactInfoTableLayout.Controls.Add(this.LastNameTextBox, 1, 0);
+            this.ContactInfoTableLayout.Controls.Add(this.NameTextBox, 1, 1);
+            this.ContactInfoTableLayout.Controls.Add(this.LastNameLabel, 0, 0);
             this.ContactInfoTableLayout.Controls.Add(this.VKIDTextBox, 1, 6);
             this.ContactInfoTableLayout.Controls.Add(this.EmailTextBox, 1, 5);
             this.ContactInfoTableLayout.Controls.Add(this.BithdayDateTimePicker, 1, 3);
-            this.ContactInfoTableLayout.Controls.Add(this.LastNameTextBox, 1, 2);
+            this.ContactInfoTableLayout.Controls.Add(this.MiddleNameTextBox, 1, 2);
             this.ContactInfoTableLayout.Dock = System.Windows.Forms.DockStyle.Top;
             this.ContactInfoTableLayout.Location = new System.Drawing.Point(246, 0);
             this.ContactInfoTableLayout.Margin = new System.Windows.Forms.Padding(0);
@@ -143,33 +143,33 @@
             this.VKIDLabel.Text = "vk.com\\";
             this.VKIDLabel.TextAlign = System.Drawing.ContentAlignment.BottomRight;
             // 
+            // NameLabel
+            // 
+            this.NameLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.NameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.NameLabel.Location = new System.Drawing.Point(0, 44);
+            this.NameLabel.Margin = new System.Windows.Forms.Padding(0);
+            this.NameLabel.Name = "NameLabel";
+            this.NameLabel.Size = new System.Drawing.Size(125, 44);
+            this.NameLabel.TabIndex = 1;
+            this.NameLabel.Text = "Name";
+            this.NameLabel.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            // 
             // MiddleNameLabel
             // 
             this.MiddleNameLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.MiddleNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.MiddleNameLabel.Location = new System.Drawing.Point(0, 44);
+            this.MiddleNameLabel.Location = new System.Drawing.Point(0, 88);
             this.MiddleNameLabel.Margin = new System.Windows.Forms.Padding(0);
             this.MiddleNameLabel.Name = "MiddleNameLabel";
             this.MiddleNameLabel.Size = new System.Drawing.Size(125, 44);
-            this.MiddleNameLabel.TabIndex = 1;
+            this.MiddleNameLabel.TabIndex = 2;
             this.MiddleNameLabel.Text = "Middle Name";
             this.MiddleNameLabel.TextAlign = System.Drawing.ContentAlignment.BottomRight;
-            // 
-            // LastNameLabel
-            // 
-            this.LastNameLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.LastNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.LastNameLabel.Location = new System.Drawing.Point(0, 88);
-            this.LastNameLabel.Margin = new System.Windows.Forms.Padding(0);
-            this.LastNameLabel.Name = "LastNameLabel";
-            this.LastNameLabel.Size = new System.Drawing.Size(125, 44);
-            this.LastNameLabel.TabIndex = 2;
-            this.LastNameLabel.Text = "Last Name";
-            this.LastNameLabel.TextAlign = System.Drawing.ContentAlignment.BottomRight;
             // 
             // PhoneMaskedTextBox
             // 
@@ -227,41 +227,41 @@
             this.EmailLabel.Text = "E-mail";
             this.EmailLabel.TextAlign = System.Drawing.ContentAlignment.BottomRight;
             // 
+            // LastNameTextBox
+            // 
+            this.LastNameTextBox.BackColor = System.Drawing.Color.White;
+            this.LastNameTextBox.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.LastNameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.LastNameTextBox.Location = new System.Drawing.Point(125, 18);
+            this.LastNameTextBox.Margin = new System.Windows.Forms.Padding(0, 0, 5, 0);
+            this.LastNameTextBox.Name = "LastNameTextBox";
+            this.LastNameTextBox.ReadOnly = true;
+            this.LastNameTextBox.Size = new System.Drawing.Size(328, 26);
+            this.LastNameTextBox.TabIndex = 6;
+            // 
             // NameTextBox
             // 
             this.NameTextBox.BackColor = System.Drawing.Color.White;
             this.NameTextBox.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.NameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.NameTextBox.Location = new System.Drawing.Point(125, 18);
+            this.NameTextBox.Location = new System.Drawing.Point(125, 62);
             this.NameTextBox.Margin = new System.Windows.Forms.Padding(0, 0, 5, 0);
             this.NameTextBox.Name = "NameTextBox";
             this.NameTextBox.ReadOnly = true;
             this.NameTextBox.Size = new System.Drawing.Size(328, 26);
-            this.NameTextBox.TabIndex = 6;
+            this.NameTextBox.TabIndex = 7;
             // 
-            // MiddleNameTextBox
+            // LastNameLabel
             // 
-            this.MiddleNameTextBox.BackColor = System.Drawing.Color.White;
-            this.MiddleNameTextBox.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.MiddleNameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.MiddleNameTextBox.Location = new System.Drawing.Point(125, 62);
-            this.MiddleNameTextBox.Margin = new System.Windows.Forms.Padding(0, 0, 5, 0);
-            this.MiddleNameTextBox.Name = "MiddleNameTextBox";
-            this.MiddleNameTextBox.ReadOnly = true;
-            this.MiddleNameTextBox.Size = new System.Drawing.Size(328, 26);
-            this.MiddleNameTextBox.TabIndex = 7;
-            // 
-            // NameLabel
-            // 
-            this.NameLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.NameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.NameLabel.Location = new System.Drawing.Point(0, 0);
-            this.NameLabel.Margin = new System.Windows.Forms.Padding(0);
-            this.NameLabel.Name = "NameLabel";
-            this.NameLabel.Size = new System.Drawing.Size(125, 44);
-            this.NameLabel.TabIndex = 0;
-            this.NameLabel.Text = "Name";
-            this.NameLabel.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.LastNameLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.LastNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.LastNameLabel.Location = new System.Drawing.Point(0, 0);
+            this.LastNameLabel.Margin = new System.Windows.Forms.Padding(0);
+            this.LastNameLabel.Name = "LastNameLabel";
+            this.LastNameLabel.Size = new System.Drawing.Size(125, 44);
+            this.LastNameLabel.TabIndex = 0;
+            this.LastNameLabel.Text = "Last Name";
+            this.LastNameLabel.TextAlign = System.Drawing.ContentAlignment.BottomRight;
             // 
             // VKIDTextBox
             // 
@@ -299,17 +299,17 @@
             this.BithdayDateTimePicker.Size = new System.Drawing.Size(328, 29);
             this.BithdayDateTimePicker.TabIndex = 12;
             // 
-            // LastNameTextBox
+            // MiddleNameTextBox
             // 
-            this.LastNameTextBox.BackColor = System.Drawing.Color.White;
-            this.LastNameTextBox.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.LastNameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.LastNameTextBox.Location = new System.Drawing.Point(125, 106);
-            this.LastNameTextBox.Margin = new System.Windows.Forms.Padding(0, 0, 5, 0);
-            this.LastNameTextBox.Name = "LastNameTextBox";
-            this.LastNameTextBox.ReadOnly = true;
-            this.LastNameTextBox.Size = new System.Drawing.Size(328, 26);
-            this.LastNameTextBox.TabIndex = 13;
+            this.MiddleNameTextBox.BackColor = System.Drawing.Color.White;
+            this.MiddleNameTextBox.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.MiddleNameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.MiddleNameTextBox.Location = new System.Drawing.Point(125, 106);
+            this.MiddleNameTextBox.Margin = new System.Windows.Forms.Padding(0, 0, 5, 0);
+            this.MiddleNameTextBox.Name = "MiddleNameTextBox";
+            this.MiddleNameTextBox.ReadOnly = true;
+            this.MiddleNameTextBox.Size = new System.Drawing.Size(328, 26);
+            this.MiddleNameTextBox.TabIndex = 13;
             // 
             // Panel
             // 
@@ -333,6 +333,7 @@
             this.ContactsListBox.Size = new System.Drawing.Size(246, 252);
             this.ContactsListBox.TabIndex = 8;
             this.ContactsListBox.SelectedIndexChanged += new System.EventHandler(this.ContactsListBox_SelectedIndexChanged);
+            this.ContactsListBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ContactsListBox_KeyDown);
             // 
             // SystemButtonsSeparatorTableLayout
             // 
@@ -377,6 +378,7 @@
             this.FindContactTextBox.Name = "FindContactTextBox";
             this.FindContactTextBox.Size = new System.Drawing.Size(171, 29);
             this.FindContactTextBox.TabIndex = 7;
+            this.FindContactTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FindContactTextBox_KeyDown);
             // 
             // FindLabel
             // 
@@ -576,14 +578,14 @@
 
         private System.Windows.Forms.TableLayoutPanel MainTableLayout;
         private System.Windows.Forms.TableLayoutPanel ContactInfoTableLayout;
+        private System.Windows.Forms.Label LastNameLabel;
         private System.Windows.Forms.Label NameLabel;
         private System.Windows.Forms.Label MiddleNameLabel;
-        private System.Windows.Forms.Label LastNameLabel;
         private System.Windows.Forms.Label BirthdayLabel;
         private System.Windows.Forms.Label PhoneNumberLabel;
         private System.Windows.Forms.Label EmailLabel;
+        private System.Windows.Forms.TextBox LastNameTextBox;
         private System.Windows.Forms.TextBox NameTextBox;
-        private System.Windows.Forms.TextBox MiddleNameTextBox;
         private System.Windows.Forms.TextBox EmailTextBox;
         private System.Windows.Forms.TextBox VKIDTextBox;
         private System.Windows.Forms.Panel Panel;
@@ -598,7 +600,7 @@
         private System.Windows.Forms.TextBox FindContactTextBox;
         private System.Windows.Forms.Label FindLabel;
         private System.Windows.Forms.Label VKIDLabel;
-        private System.Windows.Forms.TextBox LastNameTextBox;
+        private System.Windows.Forms.TextBox MiddleNameTextBox;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveToFileToolStripMenuItem;
