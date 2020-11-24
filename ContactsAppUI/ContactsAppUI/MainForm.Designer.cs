@@ -68,6 +68,9 @@
             this.EditContactButton = new System.Windows.Forms.Button();
             this.DeleteContactButton = new System.Windows.Forms.Button();
             this.projectManagerBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.BirthdayTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.BirthdayInfoImagePanel = new System.Windows.Forms.Panel();
+            this.BirthdayBoyLabel = new System.Windows.Forms.Label();
             this.MainTableLayout.SuspendLayout();
             this.ContactInfoTableLayout.SuspendLayout();
             this.Panel.SuspendLayout();
@@ -76,6 +79,7 @@
             this.menuStrip1.SuspendLayout();
             this.AddEditDeleteButtonsSeparatorTableLayout.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.projectManagerBindingSource)).BeginInit();
+            this.BirthdayTableLayoutPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // MainTableLayout
@@ -86,6 +90,7 @@
             this.MainTableLayout.Controls.Add(this.ContactInfoTableLayout, 1, 0);
             this.MainTableLayout.Controls.Add(this.Panel, 0, 0);
             this.MainTableLayout.Controls.Add(this.AddEditDeleteButtonsSeparatorTableLayout, 0, 1);
+            this.MainTableLayout.Controls.Add(this.BirthdayTableLayoutPanel, 1, 1);
             this.MainTableLayout.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MainTableLayout.Location = new System.Drawing.Point(0, 0);
             this.MainTableLayout.Name = "MainTableLayout";
@@ -545,6 +550,42 @@
             this.DeleteContactButton.UseVisualStyleBackColor = true;
             this.DeleteContactButton.Click += new System.EventHandler(this.DeleteContactButton_Click);
             // 
+            // BirthdayTableLayoutPanel
+            // 
+            this.BirthdayTableLayoutPanel.ColumnCount = 2;
+            this.BirthdayTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.BirthdayTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.BirthdayTableLayoutPanel.Controls.Add(this.BirthdayInfoImagePanel, 0, 0);
+            this.BirthdayTableLayoutPanel.Controls.Add(this.BirthdayBoyLabel, 1, 0);
+            this.BirthdayTableLayoutPanel.Location = new System.Drawing.Point(246, 311);
+            this.BirthdayTableLayoutPanel.Margin = new System.Windows.Forms.Padding(0);
+            this.BirthdayTableLayoutPanel.Name = "BirthdayTableLayoutPanel";
+            this.BirthdayTableLayoutPanel.RowCount = 1;
+            this.BirthdayTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.BirthdayTableLayoutPanel.Size = new System.Drawing.Size(455, 55);
+            this.BirthdayTableLayoutPanel.TabIndex = 5;
+            // 
+            // BirthdayInfoImagePanel
+            // 
+            this.BirthdayInfoImagePanel.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("BirthdayInfoImagePanel.BackgroundImage")));
+            this.BirthdayInfoImagePanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.BirthdayInfoImagePanel.Location = new System.Drawing.Point(0, 0);
+            this.BirthdayInfoImagePanel.Margin = new System.Windows.Forms.Padding(0);
+            this.BirthdayInfoImagePanel.Name = "BirthdayInfoImagePanel";
+            this.BirthdayInfoImagePanel.Size = new System.Drawing.Size(50, 55);
+            this.BirthdayInfoImagePanel.TabIndex = 6;
+            // 
+            // BirthdayBoyLabel
+            // 
+            this.BirthdayBoyLabel.AutoSize = true;
+            this.BirthdayBoyLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BirthdayBoyLabel.Location = new System.Drawing.Point(53, 3);
+            this.BirthdayBoyLabel.Margin = new System.Windows.Forms.Padding(3);
+            this.BirthdayBoyLabel.Name = "BirthdayBoyLabel";
+            this.BirthdayBoyLabel.Size = new System.Drawing.Size(399, 49);
+            this.BirthdayBoyLabel.TabIndex = 7;
+            this.BirthdayBoyLabel.Text = "label1";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -570,6 +611,8 @@
             this.menuStrip1.PerformLayout();
             this.AddEditDeleteButtonsSeparatorTableLayout.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.projectManagerBindingSource)).EndInit();
+            this.BirthdayTableLayoutPanel.ResumeLayout(false);
+            this.BirthdayTableLayoutPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -614,6 +657,9 @@
         private System.Windows.Forms.MaskedTextBox PhoneMaskedTextBox;
         private System.Windows.Forms.BindingSource projectManagerBindingSource;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
+        private System.Windows.Forms.TableLayoutPanel BirthdayTableLayoutPanel;
+        private System.Windows.Forms.Panel BirthdayInfoImagePanel;
+        private System.Windows.Forms.Label BirthdayBoyLabel;
     }
 }
 

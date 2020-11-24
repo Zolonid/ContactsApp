@@ -42,6 +42,8 @@ namespace ContactsAppUI
             }
 
             ContactsListBox.DataSource = _bindingList;
+
+            CheckForBirthday();
         }
 
         /// <summary>
@@ -102,6 +104,34 @@ namespace ContactsAppUI
         }
 
         /// <summary>
+        /// Checks contact list in _projectData for birthday of contact
+        /// </summary>
+        private void CheckForBirthday()
+        {
+            var birthdayBoys = _projectData.FindBirthdayBoy(DateTime.Today);
+            var labelText = "";
+
+            if (birthdayBoys.Count != 0)
+            {
+                labelText = @"Today is the birthday of ";
+
+                foreach (var birthdayBoy in birthdayBoys)
+                {
+                    labelText +=
+                        $@"{birthdayBoy.Name[2]} {birthdayBoy.Name[0]} ({DateTime.Today.Year - birthdayBoy.Birthday.Year}), ";
+                }
+
+                labelText = labelText.Remove(labelText.Length - 2) + @".";
+            }
+            else
+            {
+                BirthdayBoyLabel.Text = @"Today is no one's birthday.";
+            }
+
+            BirthdayBoyLabel.Text = labelText;
+        }
+
+        /// <summary>
         /// Demo for json serialization and deserialization.
         /// </summary>
         void JsonDemo()
@@ -147,6 +177,7 @@ namespace ContactsAppUI
 
                 SortContactListBox();
                 RefreshContactInfo();
+                CheckForBirthday();
             }
         }
 
@@ -168,15 +199,11 @@ namespace ContactsAppUI
 
                     SortContactListBox();
                     RefreshContactInfo();
+                    CheckForBirthday();
                     break;
             }
 
             
-        }
-
-        private void ContactsListBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            RefreshContactInfo();
         }
 
         private void DeleteContactButton_Click(object sender, EventArgs e)
@@ -186,12 +213,18 @@ namespace ContactsAppUI
                 "Confirmation",
                 MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                _projectData.ContactList.Remove((Contact) ContactsListBox.SelectedItem);
+                _projectData.ContactList.Remove((Contact)ContactsListBox.SelectedItem);
                 _bindingList.Remove((Contact)ContactsListBox.SelectedItem);
 
                 SortContactListBox();
                 RefreshContactInfo();
+                CheckForBirthday();
             }
+        }
+
+        private void ContactsListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            RefreshContactInfo();
         }
 
         private void ExitToolStripMenuItem_Click(object sender, EventArgs e)

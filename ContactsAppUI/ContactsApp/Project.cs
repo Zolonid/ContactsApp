@@ -115,5 +115,23 @@ namespace ContactsApp
 
             return searchedList;
         }
+
+        /// <summary>
+        /// Search contact list for people with specified birthday
+        /// </summary>
+        public List<Contact> FindBirthdayBoy(DateTime date)
+        {
+            var returnList = new List<Contact>();
+
+            foreach (var contact in ContactList)
+            {
+                if (contact.Birthday.Month == date.Month && contact.Birthday.Day == date.Day)
+                {
+                    returnList.Add((contact));
+                }
+            }
+
+            return returnList;
+        }
     }
 }

@@ -59,7 +59,7 @@ namespace ContactsApp
             set
             {
                 //Date must be beetwen 01.01.1900 and now
-                if (value.Year < 1900 || value > DateTime.Now)
+                if (value.Year < 1900 || value > DateTime.Today)
                     throw new ArgumentException(message: "Birthday date cannot be sooner than 20 century and later than now.");
 
                 _birthday = value;
