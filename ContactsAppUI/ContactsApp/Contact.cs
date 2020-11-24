@@ -106,6 +106,10 @@ namespace ContactsApp
         /// <param name="vkid">Up to 15 characters.</param>
         public Contact(string[] name, PhoneNumber phoneNumber, DateTime birthday, string email, string vkid)
         {
+            _name = new string[3];
+            PhoneNumber = new PhoneNumber();
+            Birthday = DateTime.Today;
+
             Name = name;
             PhoneNumber = phoneNumber;
             Birthday = birthday;

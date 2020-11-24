@@ -67,10 +67,10 @@
             this.AddContactButton = new System.Windows.Forms.Button();
             this.EditContactButton = new System.Windows.Forms.Button();
             this.DeleteContactButton = new System.Windows.Forms.Button();
-            this.projectManagerBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.BirthdayTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.BirthdayInfoImagePanel = new System.Windows.Forms.Panel();
             this.BirthdayBoyLabel = new System.Windows.Forms.Label();
+            this.projectManagerBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.MainTableLayout.SuspendLayout();
             this.ContactInfoTableLayout.SuspendLayout();
             this.Panel.SuspendLayout();
@@ -78,8 +78,8 @@
             this.FindTextBoxSeparatorTableLayout.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.AddEditDeleteButtonsSeparatorTableLayout.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.projectManagerBindingSource)).BeginInit();
             this.BirthdayTableLayoutPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.projectManagerBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // MainTableLayout
@@ -584,7 +584,7 @@
             this.BirthdayBoyLabel.Name = "BirthdayBoyLabel";
             this.BirthdayBoyLabel.Size = new System.Drawing.Size(399, 49);
             this.BirthdayBoyLabel.TabIndex = 7;
-            this.BirthdayBoyLabel.Text = "label1";
+            this.BirthdayBoyLabel.Text = "Today is no one\'s birthday.";
             // 
             // MainForm
             // 
@@ -598,6 +598,7 @@
             this.MinimumSize = new System.Drawing.Size(480, 270);
             this.Name = "MainForm";
             this.Text = "Contacts App";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.MainTableLayout.ResumeLayout(false);
             this.ContactInfoTableLayout.ResumeLayout(false);
@@ -610,9 +611,9 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.AddEditDeleteButtonsSeparatorTableLayout.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.projectManagerBindingSource)).EndInit();
             this.BirthdayTableLayoutPanel.ResumeLayout(false);
             this.BirthdayTableLayoutPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.projectManagerBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }

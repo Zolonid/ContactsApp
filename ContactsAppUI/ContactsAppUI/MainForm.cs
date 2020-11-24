@@ -16,20 +16,20 @@ namespace ContactsAppUI
 {
     public partial class MainForm : Form
     {
-        public string _filePath;
-        public static string _fileName = "Contacts.data";
+        private string _filePath;
+        private static string _fileName = "Contacts.data";
         private Project _projectData;
         private BindingList<Contact> _bindingList;
 
         public MainForm()
         {
             InitializeComponent();
-
-            _filePath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            _filePath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+
             if (File.Exists(_filePath + @"\" + _fileName))
             {
                 _projectData = ProjectManager.LoadFromFile(_filePath + @"\" + _fileName);
@@ -295,6 +295,11 @@ namespace ContactsAppUI
             {
                 DeleteContactButton_Click(null, null);
             }
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            ProjectManager.SaveToFile(_projectData, _filePath + @"\" + _fileName);
         }
     }
 }
