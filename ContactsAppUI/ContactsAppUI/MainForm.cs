@@ -125,7 +125,7 @@ namespace ContactsAppUI
             }
             else
             {
-                BirthdayBoyLabel.Text = @"Today is no one's birthday.";
+                labelText = @"Today is no one's birthday.";
             }
 
             BirthdayBoyLabel.Text = labelText;
