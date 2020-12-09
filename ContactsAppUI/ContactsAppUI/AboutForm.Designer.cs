@@ -64,9 +64,9 @@
             this.AuthorLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.AuthorLabel.Location = new System.Drawing.Point(12, 100);
             this.AuthorLabel.Name = "AuthorLabel";
-            this.AuthorLabel.Size = new System.Drawing.Size(186, 20);
+            this.AuthorLabel.Size = new System.Drawing.Size(181, 20);
             this.AuthorLabel.TabIndex = 2;
-            this.AuthorLabel.Text = "Autrhor: Nikishkin Artyom";
+            this.AuthorLabel.Text = "Author: Nikishkin Artyom";
             // 
             // CopyrightLabel
             // 
