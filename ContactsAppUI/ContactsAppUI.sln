@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30711.63
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactsAppUI", "ContactsAppUI\ContactsAppUI.csproj", "{DAC874A5-BD9E-4188-B601-EEE63CE24387}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ContactsApp", "ContactsApp\ContactsApp.csproj", "{66BF583C-B3F4-459F-BF46-D65F3168E195}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Reports", "Reports", "{5D61C10C-B20A-486F-B401-CC4FA127744C}"
+	ProjectSection(SolutionItems) = preProject
+		..\Reports\Lab2.docx = ..\Reports\Lab2.docx
+		..\Reports\Lab3.docx = ..\Reports\Lab3.docx
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactsApp.UnitTests", "ContactsApp.UnitTests\ContactsApp.UnitTests.csproj", "{C90F6F8A-4F53-4158-BFC5-CE5A770E45ED}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DAC874A5-BD9E-4188-B601-EEE63CE24387}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DAC874A5-BD9E-4188-B601-EEE63CE24387}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DAC874A5-BD9E-4188-B601-EEE63CE24387}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DAC874A5-BD9E-4188-B601-EEE63CE24387}.Release|Any CPU.Build.0 = Release|Any CPU
+		{66BF583C-B3F4-459F-BF46-D65F3168E195}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66BF583C-B3F4-459F-BF46-D65F3168E195}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66BF583C-B3F4-459F-BF46-D65F3168E195}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66BF583C-B3F4-459F-BF46-D65F3168E195}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C90F6F8A-4F53-4158-BFC5-CE5A770E45ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C90F6F8A-4F53-4158-BFC5-CE5A770E45ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C90F6F8A-4F53-4158-BFC5-CE5A770E45ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C90F6F8A-4F53-4158-BFC5-CE5A770E45ED}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5B127E0D-ED52-4727-9A65-271C9B654434}
+	EndGlobalSection
+EndGlobal
